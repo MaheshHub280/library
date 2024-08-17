@@ -6,16 +6,17 @@ def newBuild()
 {
   sh'mvn package'
 }
-def newDeployment(jobname,ip,contextpath)
+def newDeployment(jobname,ip,appname)
 {
-   deploy "adapters: [tomcat9(credentialsId: '1289cb85-308b-4fb8-b93b-440eab01cfc4',/var/lib/jenkins/workspace/${jobname},${ip})], contextPath:${contextpath}, war: '**/*.war"
+  sh "scp /var/lib/jenkins/workspace/${jobname}/webapp/tar get/webapp.war ubuntu@${ip}:/var/lib/tomcat9/webapps/${appname} .war" 
 }
+   
 def newselinum(repo,jobname)
 {
    git "https://github.com/intelliqittrainings/${repo}"
    sh "java -jar /var/lib/jenkins/workspace/${jobname}/testing.jar"
 }
-def newDelivery(jobname,ip,contextpath)
+def newDelivery(jobname,ip,appname)
 {
-  deploy "adapters: [tomcat9(credentialsId: '1289cb85-308b-4fb8-b93b-440eab01cfc4', /var/lib/jenkins/workspace/${jobname},${ip})], contextPath:${contextpath}, war: '**/*.war"
+  sh "scp /var/lib/jenkins/workspace/${jobname}/webapp/tar get/webapp.war ubuntu@${ip}:/var/lib/tomcat9/webapps/${appname} .war"
 }
