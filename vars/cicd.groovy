@@ -8,7 +8,7 @@ def newBuild()
 }
 def newDeploy(jobname,ip,appname)
 {
-  sh "scp /var/lib/jenkins/workspace/${jobname}/webapp/tar get/webapp.war ubuntu@${ip}:/var/lib/tomcat9/webapps/${appname} .war" 
+   deploy "adapters: [tomcat9(credentialsId: '1289cb85-308b-4fb8-b93b-440eab01cfc4', path: '/var/lib/jenkins/workspace/${jobname}', url: 'http://${ip})], contextPath: '${appname}', war: '**/*.war" 
 }
 def newselinum(repo,jobname)
 {
@@ -17,6 +17,6 @@ def newselinum(repo,jobname)
 }
 def newDelivery(jobname,ip,appname)
 {
-  sh "scp /var/lib/jenkins/workspace/${jobname}/webapp/tar get/webapp.war ubuntu@${ip}:/var/lib/tomcat9/webapps/${appname} .war"
+   deploy adapters: [tomcat9(credentialsId: '1289cb85-308b-4fb8-b93b-440eab01cfc4', path: '/var/lib/jenkins/workspace/${jobname}', url: 'http://${ip}')], contextPath: '${appname}', war: '**/*.war'
 }
    
