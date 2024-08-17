@@ -8,7 +8,7 @@ def newBuild()
 }
 def newDeployment(jobname,ip,contextpath)
 {
-   deploy "adapters: [tomcat9(credentialsId: '1289cb85-308b-4fb8-b93b-440eab01cfc4', path: '',${jobname}: 'http://${ip})], contextPath:${contextpath}, war: '**/*.war"
+   deploy "adapters: [tomcat9(credentialsId: '1289cb85-308b-4fb8-b93b-440eab01cfc4',/var/lib/jenkins/workspace/${jobname},${ip})], contextPath:${contextpath}, war: '**/*.war"
 }
 def newselinum(repo,jobname)
 {
@@ -17,5 +17,5 @@ def newselinum(repo,jobname)
 }
 def newDelivery(jobname,ip,contextpath)
 {
-  deploy "adapters: [tomcat9(credentialsId: '1289cb85-308b-4fb8-b93b-440eab01cfc4', path: '',${jobname}: 'http://${ip})], contextPath:${contextpath}, war: '**/*.war"
+  deploy "adapters: [tomcat9(credentialsId: '1289cb85-308b-4fb8-b93b-440eab01cfc4', /var/lib/jenkins/workspace/${jobname},${ip})], contextPath:${contextpath}, war: '**/*.war"
 }
