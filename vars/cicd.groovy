@@ -8,7 +8,7 @@ def newBuild()
 }
 def newDeploy(jobname)
 {
-  "/var/lib/jenkins/workspace/${jobname}"
+ sh "scp /var/lib/jenkins/workspace/${jobname}/webapp/target/webapp.war   ubuntu@${ip}:/var/lib/tomcat9/webapps/${appname}.war"
 }
 def newselinum(jobname)
 {
