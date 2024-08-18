@@ -6,9 +6,9 @@ def newBuild()
 {
   sh'mvn package'
 }
-def newDeploy(jobname,ip,appname)
+def newDeploy(jobname)
 {
-  path "/var/lib/jenkins/workspace/${jobname},${ip},${appname}"
+  "/var/lib/jenkins/workspace/${jobname}"
 }
 def newselinum(jobname)
 {
